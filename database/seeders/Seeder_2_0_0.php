@@ -18,21 +18,6 @@ class Seeder_1_0_0 extends Seeder
         // Version
         $version = '1.0.0';
 
-        // attributes_port_connector
-        $portConnectorArray = [
-            [ 'value' => 1, 'name' => 'RJ45', 'type_id' => 1, 'default' => 1],
-            [ 'value' => 2, 'name' => 'LC', 'type_id' => 2, 'default' => 0],
-            [ 'value' => 3, 'name' => 'SC', 'type_id' => 2, 'default' => 0],
-            [ 'value' => 4, 'name' => 'SFP', 'type_id' => 4, 'default' => 0],
-            [ 'value' => 5, 'name' => 'QSFP', 'type_id' => 4, 'default' => 0],
-            [ 'value' => 6, 'name' => 'MPO-12', 'type_id' => 2, 'default' => 0],
-            [ 'value' => 7, 'name' => 'MPO-24', 'type_id' => 2, 'default' => 0]
-        ];
-
-        foreach($portConnectorArray as $portConnector) {
-            DB::table('attributes_port_connector')->insert($portConnector);
-        }
-
         // attributes_port_orientation
         $portOrientationArray = [
             [ 'value' => 1, 'name' => 'Top-Left to Right', 'default' => 1],
@@ -46,60 +31,127 @@ class Seeder_1_0_0 extends Seeder
             DB::table('attributes_port_orientation')->insert($portOrientation);
         }
 
-        // attributes_media
-        $mediaArray = [
-            [ 'value' => 1, 'name' => 'Cat5e', 'category_id' => 1, 'type_id' => 1, 'display' => 1, 'default' => 1],
-            [ 'value' => 2, 'name' => 'Cat6', 'category_id' => 1, 'type_id' => 1, 'display' => 1, 'default' => 0],
-            [ 'value' => 3, 'name' => 'Cat6a', 'category_id' => 1, 'type_id' => 1, 'display' => 1, 'default' => 0],
-            [ 'value' => 5, 'name' => 'SM-OS1', 'category_id' => 4, 'type_id' => 2, 'display' => 1, 'default' => 0],
-            [ 'value' => 6, 'name' => 'MM-OM4', 'category_id' => 2, 'type_id' => 2, 'display' => 1, 'default' => 0],
-            [ 'value' => 7, 'name' => 'MM-OM3', 'category_id' => 2, 'type_id' => 2, 'display' => 1, 'default' => 0],
-            [ 'value' => 8, 'name' => 'Unspecified', 'category_id' => 5, 'type_id' => 4, 'display' => 0, 'default' => 0]
+        // attributes_port_connector
+        $portConnectorArray = [
+            [ 'value' => 1, 'name' => 'Unspecified',    'type_id' => 1, 'default' => 0],
+
+            [ 'value' => 2, 'name' => 'RJ45',           'type_id' => 2, 'default' => 1],
+
+            [ 'value' => 3, 'name' => 'LC',             'type_id' => 3, 'default' => 0],
+            [ 'value' => 4, 'name' => 'SC',             'type_id' => 3, 'default' => 0],
+            [ 'value' => 5, 'name' => 'ST',             'type_id' => 3, 'default' => 0],
+            [ 'value' => 6, 'name' => 'MPO-12',         'type_id' => 3, 'default' => 0],
+            [ 'value' => 7, 'name' => 'MPO-24',         'type_id' => 3, 'default' => 0],
+            [ 'value' => 8, 'name' => 'SFP',            'type_id' => 1, 'default' => 0],
+            [ 'value' => 9, 'name' => 'QSFP',           'type_id' => 1, 'default' => 0],
+
+            [ 'value' => 10, 'name' => 'BNC',            'type_id' => 4, 'default' => 0],
+
+            [ 'value' => 11, 'name' => 'XLR-3M',         'type_id' => 5, 'default' => 0],
+            [ 'value' => 12, 'name' => 'XLR-3F',         'type_id' => 5, 'default' => 0],
+            [ 'value' => 13, 'name' => 'XLR-5M',         'type_id' => 6, 'default' => 0],
+            [ 'value' => 14, 'name' => 'XLR-5F',         'type_id' => 6, 'default' => 0],
+
         ];
 
-        foreach($mediaArray as $media) {
-            DB::table('attributes_media')->insert($media);
-        }
-
-        // attributes_media_type
-        $mediaTypeArray = [
-            [ 'value' => 1, 'name' => 'Copper', 'unit_of_length' => 'ft.'],
-            [ 'value' => 2, 'name' => 'Fiber', 'unit_of_length' => 'm.'],
-            [ 'value' => 3, 'name' => 'Label', 'unit_of_length' => ''],
-            [ 'value' => 4, 'name' => 'Unspecified', 'unit_of_length' => 'm.']
-        ];
-
-        foreach($mediaTypeArray as $mediaType) {
-            DB::table('attributes_media_type')->insert($mediaType);
-        }
-
-        // attributes_media_category
-        $mediaCategoryArray = [
-            [ 'value' => 1, 'name' => 'Copper', 'type_id' => 1],
-            [ 'value' => 2, 'name' => 'Multimode Fiber', 'type_id' => 2],
-            [ 'value' => 3, 'name' => 'Label', 'type_id' => 3],
-            [ 'value' => 4, 'name' => 'Singlemode Fiber', 'type_id' => 2],
-            [ 'value' => 5, 'name' => 'Unspecified', 'type_id' => 4]
-        ];
-
-        foreach($mediaCategoryArray as $mediaCategory) {
-            DB::table('attributes_media_category')->insert($mediaCategory);
+        foreach($portConnectorArray as $portConnector) {
+            DB::table('attributes_port_connector')->insert($portConnector);
         }
 
         // attributes_cable_connector
         $cableConnectorArray = [
-            [ 'value' => 1, 'name' => 'RJ45', 'default' => 1],
-            [ 'value' => 2, 'name' => 'LC', 'default' => 0],
-            [ 'value' => 3, 'name' => 'SC', 'default' => 0],
-            [ 'value' => 4, 'name' => 'Label', 'default' => 0],
-            [ 'value' => 5, 'name' => 'MPO-12', 'default' => 0],
-            [ 'value' => 6, 'name' => 'MPO-24', 'default' => 0]
+            [ 'value' => 1, 'name' => 'Unspecified', 'default' => 0],
+
+            //Copper connectors
+            [ 'value' => 2, 'name' => 'RJ45', 'default' => 1],
+
+            // Fiber connectors
+            [ 'value' => 3, 'name' => 'LC', 'default' => 0],
+            [ 'value' => 4, 'name' => 'SC', 'default' => 0],
+            [ 'value' => 5, 'name' => 'ST', 'default' => 0],
+            [ 'value' => 6, 'name' => 'MPO-12', 'default' => 0],
+            [ 'value' => 7, 'name' => 'MPO-24', 'default' => 0],
+
+            // Coaxial connectors
+            [ 'value' => 8, 'name' => 'BNC', 'default' => 0],
+
+            // Audio connectors
+            [ 'value' => 9, 'name' => 'XLR-3M','default' => 0],
+            [ 'value' => 10, 'name' => 'XLR-3F', 'default' => 0],
+
+            //Lighting connectors
+            [ 'value' => 11, 'name' => 'XLR-5M', 'default' => 0],
+            [ 'value' => 12, 'name' => 'XLR-5F', 'default' => 0],
+    
         ];
 
         foreach($cableConnectorArray as $cableConnector) {
             DB::table('attributes_cable_connector')->insert($cableConnector);
         }
 
+        // attributes_media //
+        $mediaArray = [
+            [ 'value' => 1, 'name' => 'Unspecified', 'category_id' => 1, 'type_id' => 1, 'display' => 0, 'default' => 0],
+
+            //Copper  cabling
+            [ 'value' => 2, 'name' => 'Cat5e', 'category_id' => 2, 'type_id' => 2, 'display' => 1, 'default' => 1],
+            [ 'value' => 3, 'name' => 'Cat6', 'category_id' => 2, 'type_id' => 2, 'display' => 1, 'default' => 0],
+            [ 'value' => 4, 'name' => 'Cat6a', 'category_id' => 2, 'type_id' => 2, 'display' => 1, 'default' => 0],
+
+            // Fiber cabling
+            [ 'value' => 5, 'name' => 'SM-OS1', 'category_id' => 3, 'type_id' => 3, 'display' => 1, 'default' => 0],
+            [ 'value' => 6, 'name' => 'MM-OM4', 'category_id' => 4, 'type_id' => 3, 'display' => 1, 'default' => 0],
+            [ 'value' => 7, 'name' => 'MM-OM3', 'category_id' => 4, 'type_id' => 3, 'display' => 1, 'default' => 0],
+
+            // Video/SDI cabling
+            [ 'value' => 8, 'name' => 'HD-SDI', 'category_id' => 5, 'type_id' => 4, 'display' => 1, 'default' => 0],
+            [ 'value' => 9, 'name' => '3G-SDI', 'category_id' => 5, 'type_id' => 4, 'display' => 1, 'default' => 0],
+            [ 'value' => 10, 'name' => '6G-SDI', 'category_id' => 5, 'type_id' => 4, 'display' => 1, 'default' => 0],
+            [ 'value' => 11, 'name' => '12G-SDI', 'category_id' => 5, 'type_id' => 4, 'display' => 1, 'default' => 0],
+
+            // Audio cabling
+            [ 'value' => 12, 'name' => '2-Core Shielded', 'category_id' => 6, 'type_id' => 5, 'display' => 1, 'default' => 0],
+
+            // Lighting cabling
+            [ 'value' => 13, 'name' => '4-Core Shielded', 'category_id' => 6, 'type_id' => 5, 'display' => 1, 'default' => 0],
+
+        ];
+
+        foreach($mediaArray as $media) {
+            DB::table('attributes_media')->insert($media);
+        }
+
+        // attributes_media_category
+        $mediaCategoryArray = [
+            [ 'value' => 1, 'name' => 'Unspecified', 'default' => 0],
+            [ 'value' => 2, 'name' => 'Network', 'default' => 1],
+            [ 'value' => 3, 'name' => 'Singlemode Fiber', 'default' => 0],
+            [ 'value' => 4, 'name' => 'Multimode Fiber', 'default' => 0],
+            [ 'value' => 5, 'name' => 'Video', 'default' => 0],
+            [ 'value' => 6, 'name' => 'Audio', 'default' => 0],
+            [ 'value' => 7, 'name' => 'Lighting', 'default' => 0],
+
+        ];
+
+        foreach($mediaCategoryArray as $mediaCategory) {
+            DB::table('attributes_media_category')->insert($mediaCategory);
+        }
+        
+        // attributes_media_type
+        $mediaTypeArray = [
+            [ 'value' => 1, 'name' => 'Unspecified', 'unit_of_length' => 'm.'],
+            [ 'value' => 2, 'name' => 'Copper', 'unit_of_length' => 'm.'],
+            [ 'value' => 3, 'name' => 'Fiber', 'unit_of_length' => 'm.'],
+            [ 'value' => 4, 'name' => 'Coaxial', 'unit_of_length' => 'm.'],
+            [ 'value' => 5, 'name' => 'Balanced', 'unit_of_length' => 'm.'],
+
+        ];
+
+        foreach($mediaTypeArray as $mediaType) {
+            DB::table('attributes_media_type')->insert($mediaType);
+        }
+
+        
         // floorplan_template
         $floorplanTemplateArray = [
             [ 'type' => 'device', 'name' => 'Device', 'icon' => 'MonitorIcon', 'function' => 'endpoint'],
